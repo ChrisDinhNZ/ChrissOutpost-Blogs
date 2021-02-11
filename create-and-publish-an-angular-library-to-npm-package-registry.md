@@ -13,13 +13,13 @@ In this blog we will work through the following:
 
 To create this library we will need [Angular CLI](https://cli.angular.io), which I have already installed.
 
-The following command will create a "workspace" for the library. The --create-application=false flag tells the CLI not to scaffold the default Angular application since we are going to create a library.
+The following command will create a "workspace" for the library. The `--create-application=false` flag tells the CLI not to scaffold the default Angular application since we are going to create a library.
 
 ```shell
 ng new SMoS-npm --create-application=false
 ```
 
-The previous command will also initialise a git repository, which is good because I preferably have my work version controlled. We are just going to go ahead and push what we have so far to GitHub (note that not everything under the SMoS-npm folder will be push to the remote repository as files and folders defined in .gitignore will not be included).
+The previous command will also initialise a git repository, which is good because I preferably have my work version controlled. We are just going to go ahead and push what we have so far to GitHub (note that not everything under the `SMoS-npm` folder will be push to the remote repository as files and folders defined in `.gitignore` will not be included).
 
 ```shell
 cd SMoS-npm
@@ -28,15 +28,15 @@ git branch -M main
 git push -u origin main
 ```
 
-The following command creates the projects/smos-js folder, which contains a component and a service inside an NgModule.
+The following command creates the `projects/smos-js` folder, which contains a component and a service inside an NgModule.
 
 ```shell
 ng generate library smos-js
 ```
 
-Since we only intends for the library to provide a service, we can get rid of smos-js.component.ts and any reference to it.
+Since we only intends for the library to provide a service, we can get rid of `smos-js.component.ts` and any reference to it.
 
-We will add a simple method to the service. This method just returns the value of SMOS_HEX_STRING_MIN_LENGTH. The service smos-js.service.ts should look as follow:
+We will add a simple method to the service. This method just returns the value of `SMOS_HEX_STRING_MIN_LENGTH`. The service `smos-js.service.ts` should look as follow.
 
 ```javascript
 import { Injectable } from '@angular/core';
@@ -70,3 +70,15 @@ We will also create an Angular app which we will use to demostrate the importing
 ```shell
 ng generate application smos-js-demo
 ```
+
+Run the scaffolded app just to verify things are working as expected.
+
+```shell
+cd smos-js-demo
+npm install
+ng serve -o
+```
+
+The `ng serve -o` should launch the browser which shows the landing page like below:
+
+![Scaffold Angular App Landing Page.png](assets/scaffold_angular_app_landing_page.png "Scaffold Angular App Landing Page")
