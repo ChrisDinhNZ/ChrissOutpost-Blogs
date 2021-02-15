@@ -142,6 +142,7 @@ Serving the demo app above will result in the following:
 
 ![smos-js-demo.gif](assets/smos-js-demo.gif "smos-js usage demo")
 
+---
 That's it, hope you 'll find that useful.
 
 Chris.
