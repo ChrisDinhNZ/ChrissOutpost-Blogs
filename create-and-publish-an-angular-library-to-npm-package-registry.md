@@ -63,6 +63,21 @@ export class SmosJsService {
 
 ### Publish library
 
+To publish the library to NPM package registry we will need to have an [npmjs.com](https://www.npmjs.com) account.
+
+The following command will build the library and place the output in the `dist/smos-js` folder.
+
+```shell
+ng build smos-js --prod
+```
+
+Now navigate to the build output folder and publish the library, note that the package name must be globally unique when publishing to NPM package registry.
+
+```shell
+cd dist/smos-js
+npm publish
+```
+
 ### Import and use library
 
 We will also create an Angular app which we will use to demostrate the importing and usage of the library.
@@ -82,3 +97,51 @@ ng serve -o
 The `ng serve -o` should launch the browser which shows the landing page like below:
 
 ![Scaffold Angular App Landing Page.png](assets/scaffold_angular_app_landing_page.png "Scaffold Angular App Landing Page")
+
+What we are going to do is remove the boilerplate content and replace the landing page with just a simple button which when clicked, will show the value of SMOS_HEX_STRING_MIN_LENGTH (i.e 11).
+
+```shell
+npm install smos-js
+```
+
+File: app.component.html
+
+```html
+<style>...
+</style>
+
+<div class="content">
+  <button (click)="OnClickMe()">Click me!</button>
+</div>
+```
+
+File: app.component.ts
+
+```javascript
+import { Component } from '@angular/core';
+import { SmosJsService } from 'smos-js'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+
+  constructor(private smosService: SmosJsService) {
+  }
+
+  OnClickMe() {
+    let result = this.smosService.GetSMoSMinimumHexStringLength();
+
+    alert(result);
+  }
+}
+```
+
+Serving the demo app above will result in the following:
+
+![smos-js-demo.gif](assets/smos-js-demo.gif "smos-js usage demo")
+
+That's it, hope you 'll find that useful.
+
+Chris.
